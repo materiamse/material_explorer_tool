@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seven Stacked Rectangles</title>
+  <style>
+    :root {
+      --rect-height: 250px;
+    }
+
+    body {
+      background-color: #1A2A44;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+                   "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+                   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      color: #FFFFFF;
+    }
+
+    .navbar {
+      width: 100%;
+      height: 75px;
+      background-color: #0F1E33;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .main-content {
+      margin-top: 75px;
+      padding: 60px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .rectangle {
+      background-color: #2E4057;
+      width: 750px;
+      height: var(--rect-height);
+      margin: 1vh 0;
+      border-radius: 25px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+      box-sizing: border-box;
+      border: 2px solid #D3D3D3;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    /* Customized expanded heights */
+    .rectangle.metals:hover { height: 950px; }
+    .rectangle.polymers:hover { height: 950px; }
+    .rectangle.ceramics:hover { height: 950px; }
+    .rectangle.composites:hover { height: 975px; }
+    .rectangle.semiconductors:hover { height: 975px; }
+    .rectangle.nanomaterials:hover { height: 1000px; }
+    .rectangle.biomaterials:hover { height: 950px; }
+
+    .top-row {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .image-placeholder {
+      width: 20%;
+      height: var(--rect-height);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      margin-right: 20px;
+      flex-shrink: 0;
+    }
+
+    .image-placeholder img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      margin-top: 15px;
+    }
+
+    .text-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      margin-top: 25px;
+    }
+
+    .text-content div:first-child {
+      font-size: 2em; /* Title size */
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .text-content div:nth-child(2) {
+      font-size: 1.4em;
+      line-height: 1.4;
+    }
+
+    .extra-content {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      width: 100%;
+    }
+
+    .rectangle:hover .extra-content {
+      opacity: 1;
+    }
+
+    .chart-row {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .chart {
+      width: 225px;
+      flex-shrink: 0;
+      text-align: center;
+    }
+
+    .chart img {
+      width: 225px;
+      height: 225px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid #D3D3D3;
+      background: #1A2A44;
+    }
+
+    .caption {
+      margin-top: 8px;
+      font-size: 1em;
+      color: #E0E0E0;
+    }
+
+    .extra-text {
+      flex: 1;
+      font-size: 1.1em;
+      line-height: 1.5;
+    }
+
+    .examples-header {
+      font-size: 1.7em; /* slightly smaller than title */
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .three-images {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 18px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <div class="navbar">
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Metals -->
+    <div class="rectangle metals">
+      <div class="top-row">
+        <div class="image-placeholder"><img src="./Metal Icon.png" alt="Metals Icon"></div>
+        <div class="text-content">
+          <div>Metals</div>
+          <div>Metals are strong, ductile, and conductive materials widely used in construction, transportation, and electronics.</div>
+        </div>
+      </div>
+      <div class="extra-content">
+        <div class="chart-row">
+          <div class="chart"><img src="./Metals Chart.png" alt="Metals Chart"></div>
+          <div class="extra-text">
+            Metals consist of metallic elements (such as iron, aluminum, copper) and their alloys (like steel and brass).
+            Their bonding structure allows high electrical and thermal conductivity, plastic deformation without fracture,
+            and superior mechanical strength compared to most material classes. Processing techniques such as alloying,
+            cold working, and heat treatments provide precise control over properties, making metals one of the most
+            versatile classes of materials. Due to their durability and recyclability, metals remain the backbone of
+            industrial development.
+          </div>
+        </div>
+        <div class="examples-header">Examples</div>
+        <div class="three-images">
+          <div class="chart"><img src="./Metal E1.jpg" alt="Copper Wires"><div class="caption">Copper Wires (Metal)</div></div>
+          <div class="chart"><img src="./Metal E2.jpg" alt="Aluminum Cans"><div class="caption">Aluminum Cans (Metal)</div></div>
+          <div class="chart"><img src="./Metal E3.jpg" alt="Steel Bridge"><div class="caption">Steel Bridge (Metal)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Polymers -->
+    <div class="rectangle polymers">
+      <div class="top-row">
+        <div class="image-placeholder"><img src="./Polymers Icon.png" alt="Polymers Icon"></div>
+        <div class="text-content">
+          <div>Polymers</div>
+          <div>Polymers are lightweight, flexible, and low-cost materials built from repeating molecular chains, used extensively in consumer products.</div>
+        </div>
+      </div>
+      <div class="extra-content">
+        <div class="chart-row">
+          <div class="chart"><img src="./Polymers Chart.png" alt="Polymers Chart"></div>
+          <div class="extra-text">
+            Polymers are composed of long-chain molecules with covalent bonds along the backbone and secondary interactions between chains.
+            They are categorized into thermoplastics, thermosets, and elastomers. While they lack the strength and heat resistance of metals
+            and ceramics, their low density, design flexibility, and cost-effectiveness have made them indispensable in packaging, textiles,
+            and structural components. Advances in polymer chemistry enable applications in biomedicine, electronics, and sustainable materials
+            through biodegradable and bio-based alternatives.
+          </div>
+        </div>
+        <div class="examples-header">Examples</div>
+        <div class="three-images">
+          <div class="chart"><img src="./Polymers E1.jpg" alt="Rubber Tires"><div class="caption">Rubber Tires (Polymer)</div></div>
+          <div class="chart"><img src="./Polymers E2.jpg" alt="Plastic Bottles"><div class="caption">Plastic Bottles (Polymer)</div></div>
+          <div class="chart"><img src="./Polymers E3.jpeg" alt="3D Printing Filament"><div class="caption">3D Printing Filament (Polymer)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ceramics -->
+    <div class="rectangle ceramics">
+      <div class="top-row">
+        <div class="image-placeholder"><img src="./Ceramics Icon.png" alt="Ceramics Icon"></div>
+        <div class="text-content">
+          <div>Ceramics</div>
+          <div>Ceramics are hard, brittle, and heat-resistant materials used in construction, aerospace, and electronics.</div>
+        </div>
+      </div>
+      <div class="extra-content">
+        <div class="chart-row">
+          <div class="chart"><img src="./Ceramics Chart.png" alt="Ceramics Chart"></div>
+          <div class="extra-text">
+            Ceramics are inorganic, non-metallic solids with ionic or covalent bonding. Their strong atomic bonds yield excellent hardness,
+            wear resistance, and thermal stability, but also brittleness under tensile stress. Traditional ceramics include clay, porcelain,
+            and glass, while advanced ceramics such as alumina, zirconia, and silicon carbide are tailored for high-performance applications
+            like cutting tools and biomedical implants. Their chemical inertness makes them ideal for environments involving corrosion,
+            oxidation, or high temperatures.
+          </div>
+        </div>
+        <div class="examples-header">Examples</div>
+        <div class="three-images">
+          <div class="chart"><img src="./Ceramics E1.jpg" alt="Cinder Blocks"><div class="caption">Brick (Concrete)</div></div>
+          <div class="chart"><img src="./Ceramics E2.jpg" alt="Glass Building"><div class="caption">Glass Building (Ceramic)</div></div>
+          <div class="chart"><img src="./Ceramics E3.jpg" alt="Ceramic Mug"><div class="caption">Mug (Ceramic)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Composites -->
+    <div class="rectangle composites">
+      <div class="top-row">
+        <div class="image-placeholder"><img src="./Composites Icon.png" alt="Composites Icon"></div>
+        <div class="text-content">
+          <div>Composites</div>
+          <div>Composites combine two or more materials to achieve superior mechanical and functional performance.</div>
+        </div>
+      </div>
+      <div class="extra-content">
+        <div class="chart-row">
+          <div class="chart"><img src="./Composites Chart.png" alt="Composites Chart"></div>
+          <div class="extra-text">
+            Composites are engineered by combining a reinforcing phase (fibers, particles) with a matrix (polymer, metal, or ceramic).
+            The synergy of these phases provides properties not attainable by individual constituents, most notably high strength-to-weight
+            ratios and tailored stiffness. Carbon fiber–reinforced polymers and fiberglass exemplify structural composites, while newer
+            classes like ceramic matrix composites (CMCs) expand use into aerospace propulsion and nuclear reactors. Their main limitations
+            include high cost and poor recyclability, but they dominate high-performance sectors such as aerospace, automotive, and sports
+            engineering.
+          </div>
+        </div>
+        <div class="examples-header">Examples</div>
+        <div class="three-images">
+          <div class="chart"><img src="./Composites E1.jpg" alt="Boat Hull"><div class="caption">Boat Hull (Composite)</div></div>
+          <div class="chart"><img src="./Composites E2.jpg" alt="Airplane Wing"><div class="caption">Airplane Wing (Composite)</div></div>
+          <div class="chart"><img src="./Composites E3.jpg" alt="Carbon Fiber Tubes"><div class="caption">Carbon Fiber Tubes (Composite)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Semiconductors -->
+    <div class="rectangle semiconductors">
+      <div class="top-row">
+        <div class="image-placeholder"><img src="./Semiconductors Icon.png" alt="Semiconductors Icon"></div>
+        <div class="text-content">
+          <div>Semiconductors</div>
+          <div>Semiconductors are materials with tunable electrical conductivity, foundational to modern electronics.</div>
+        </div>
+      </div>
+      <div class="extra-content">
+        <div class="chart-row">
+          <div class="chart"><img src="./Semiconductors Chart.png" alt="Semiconductors Chart"></div>
+          <div class="extra-text">
+            Semiconductors such as silicon, germanium, and gallium arsenide have band gaps that allow controlled electron flow.
+            Their conductivity can be precisely manipulated by doping with impurities, enabling their role in transistors, diodes,
+            and integrated circuits. Beyond computing, semiconductors are crucial for optoelectronics, including LEDs, lasers, and
+            solar cells. Their moderate density and cost reflect their balance between raw material abundance (silicon) and specialized
+            fabrication processes (chip manufacturing). Thermal management remains a critical design consideration in semiconductor devices.
+          </div>
+        </div>
+        <div class="examples-header">Examples</div>
+        <div class="three-images">
+          <div class="chart"><img src="./Semiconductors E1.jpg" alt="Semiconductor Wafer"><div class="caption">Wafer (Semiconductor)</div></div>
+          <div class="chart"><img src="./Semiconductors E2.jpg" alt="Solar Panels"><div class="caption">Solar Panels (Semiconductor)</div></div>
+          <div class="chart"><img src="./Semiconductors E3.jpg" alt="CPU Chip"><div class="caption">CPU (Semiconductor)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nanomaterials -->
+    <div class="rectangle nanomaterials">
+      <div class="top-row">
+        <div class="image-placeholder"><img src="./Nanomaterials Icon.png" alt="Nanomaterials Icon"></div>
+        <div class="text-content">
+          <div>Nanomaterials</div>
+          <div>Nanomaterials exploit structures at the nanometer scale, where quantum and surface effects dominate.</div>
+        </div>
+      </div>
+      <div class="extra-content">
+        <div class="chart-row">
+          <div class="chart"><img src="./Nanomaterials Chart.png" alt="Nanomaterials Chart"></div>
+          <div class="extra-text">
+            Nanomaterials include graphene, carbon nanotubes (CNTs), and quantum dots. At the nanoscale, materials exhibit extraordinary
+            mechanical strength, thermal conductivity, and unique optical/electronic behaviors not seen in their bulk counterparts.
+            For example, graphene demonstrates tensile strengths over 100× greater than steel at a fraction of the weight. These properties
+            have driven applications in nanoelectronics, drug delivery, advanced composites, and energy storage. However, high production
+            costs and recyclability concerns remain major barriers to widespread adoption.
+          </div>
+        </div>
+        <div class="examples-header">Examples</div>
+        <div class="three-images">
+          <div class="chart"><img src="./Nanomaterials E1.jpg" alt="Carbon Nanotube"><div class="caption">Carbon Nanotube (Nanomaterial)</div></div>
+          <div class="chart"><img src="./Nanomaterials E2.jpg" alt="Quantum Dots"><div class="caption">Quantum Dots (Nanomaterial)</div></div>
+          <div class="chart"><img src="./Nanomaterials E3.jpg" alt="Graphene Sheet"><div class="caption">Graphene Sheet (Nanomaterial)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Biomaterials -->
+    <div class="rectangle biomaterials">
+      <div class="top-row">
+        <div class="image-placeholder"><img src="./Biomaterials Icon.png" alt="Biomaterials Icon"></div>
+        <div class="text-content">
+          <div>Biomaterials</div>
+          <div>Biomaterials are designed to safely interact with biological systems, often for medical and healthcare applications.</div>
+        </div>
+      </div>
+      <div class="extra-content">
+        <div class="chart-row">
+          <div class="chart"><img src="./Biomaterials Chart.png" alt="Biomaterials Chart"></div>
+          <div class="extra-text">
+            Biomaterials encompass metals (titanium alloys), polymers (hydrogels), ceramics (bioglass), and composites specifically engineered
+            for biocompatibility and biofunctionality. They serve in implants, prosthetics, drug delivery systems, and tissue engineering
+            scaffolds. The key requirement is integration with biological tissues without eliciting adverse immune responses. Modern biomaterials
+            are increasingly designed for biodegradability and active roles in healing (e.g., bioresorbable stents). While costly and not
+            typically recyclable, they are critical in advancing modern medicine.
+          </div>
+        </div>
+        <div class="examples-header">Examples</div>
+        <div class="three-images">
+          <div class="chart"><img src="./Biomaterials E1.jpg" alt="Dental Crown"><div class="caption">Dental Crown (Biomaterial)</div></div>
+          <div class="chart"><img src="./Biomaterials E2.jpg" alt="Hip Implant"><div class="caption">Hip Implant (Biomaterial)</div></div>
+          <div class="chart"><img src="./Biomaterials E3.jpg" alt="Contact Lens"><div class="caption">Contact Lens (Biomaterial)</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
